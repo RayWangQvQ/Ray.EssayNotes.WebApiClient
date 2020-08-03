@@ -7,7 +7,7 @@ namespace Ray.EssayNotes.WebApiClient.SDK
     [HttpHost("http://localhost:5000/")]
     public interface IAccountApi : IHttpApi
     {
-        [HttpGet("api/account/token")]
+        [HttpGet("account/token")]
         ITask<string> LoginAsync(string name, string pwd);
     }
 }

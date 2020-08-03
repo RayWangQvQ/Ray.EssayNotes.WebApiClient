@@ -7,8 +7,8 @@ using Ray.EssayNotes.WebApiClient.SDK;
 
 namespace Ray.EssayNotes.WebApiClient.MicroServiceB.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class TestController : ControllerBase
     {
         private readonly IAccountApi _accountApi;

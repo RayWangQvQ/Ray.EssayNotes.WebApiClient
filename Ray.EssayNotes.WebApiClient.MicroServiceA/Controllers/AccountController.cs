@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Ray.EssayNotes.WebApiClient.MicroServiceA.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class AccountController : ControllerBase
     {
         [HttpGet]

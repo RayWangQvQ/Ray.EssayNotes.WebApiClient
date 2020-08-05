@@ -10,11 +10,17 @@ namespace Ray.EssayNotes.WebApiClient.MicroServiceA.Controllers
     [Route("[controller]")]
     public class AccountController : ControllerBase
     {
+        /// <summary>
+        /// 模拟登录
+        /// </summary>
+        /// <param name="name">用户名</param>
+        /// <param name="pwd">密码</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("token")]
         public string Login([FromQuery]string name, [FromQuery]string pwd)
         {
-            return "This is jwt";
+            return "ServiceOfA: This is jwt";//返回token
         }
     }
 }

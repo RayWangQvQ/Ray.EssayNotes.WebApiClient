@@ -21,7 +21,10 @@ namespace Ray.EssayNotes.WebApiClient.MicroServiceB.Controllers
         [HttpGet]
         public string Test([FromQuery]string name, [FromQuery]string pwd)
         {
-            return _accountApi.LoginAsync(name, pwd).GetAwaiter().GetResult();
+            //通过协议调用服务A的登录接口
+            string result = _accountApi.LoginAsync(name, pwd).GetAwaiter().GetResult();
+
+            return $"ServiceOfB: {result}";
         }
     }
 }

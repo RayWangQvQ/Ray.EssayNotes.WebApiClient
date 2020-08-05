@@ -10,8 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Ray.EssayNotes.WebApiClient.SDK;
 
-namespace Ray.EssayNotes.WebApiClient.MicroServiceA
+namespace Ray.EssayNotes.WebApiClient.MicroServiceB
 {
     public class Startup
     {
@@ -26,6 +27,12 @@ namespace Ray.EssayNotes.WebApiClient.MicroServiceA
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddHttpApi<IAccountApi>();
+
+            #region ×¢²áswagger
+            services.AddSwaggerGen();
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,6 +44,14 @@ namespace Ray.EssayNotes.WebApiClient.MicroServiceA
             }
 
             app.UseHttpsRedirection();
+
+            #region swagger
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "MicroService B");
+            });
+            #endregion
 
             app.UseRouting();
 

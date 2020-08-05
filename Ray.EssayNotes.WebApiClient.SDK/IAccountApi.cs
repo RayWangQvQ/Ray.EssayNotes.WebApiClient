@@ -1,6 +1,6 @@
 ﻿using System;
-using WebApiClient;
-using WebApiClient.Attributes;
+using WebApiClientCore;
+using WebApiClientCore.Attributes;
 
 namespace Ray.EssayNotes.WebApiClient.SDK
 {

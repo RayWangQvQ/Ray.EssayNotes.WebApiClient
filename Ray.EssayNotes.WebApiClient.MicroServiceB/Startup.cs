@@ -11,7 +11,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Ray.EssayNotes.WebApiClient.SDK;
-using WebApiClient;
 
 namespace Ray.EssayNotes.WebApiClient.MicroServiceB
 {

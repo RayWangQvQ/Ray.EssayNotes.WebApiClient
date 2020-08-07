@@ -29,11 +29,13 @@ namespace Ray.EssayNotes.WebApiClient.MicroServiceB
         {
             services.AddControllers();
 
-            //注册服务A的SdkApi
-            services.AddMicroServiceAServiceClient(Configuration);
-
             #region 注册swagger
             services.AddSwaggerGen();
+            #endregion
+
+            #region 注册服务A的SdkApi
+            services.AddMicroServiceAServiceClient(Configuration, new SDK.MicroServicesClientHostOption());
+
             #endregion
         }
 

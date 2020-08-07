@@ -14,15 +14,14 @@ namespace Ray.EssayNotes.WebApiClient.SDK.RayEssayNotesWebApiClientMicroServiceA
     {
         public static string ClientName = "Ray.EssayNotes.WebApiClient.MicroServiceA";
 
-        public static void AddMicroServiceAServiceClient(this IServiceCollection services, IConfiguration configuration)
+        public static void AddMicroServiceAServiceClient(this IServiceCollection services, Func<IServiceProvider, MicroServicesClientHostOption> option)
         {
-            var option = configuration.GetSection("MicroServicesClientHost")
-                .Get<List<MicroServicesClientHostOption>>()
-                .First(x => x.ServiceName == ClientName);
+            services.AddRayClientApi<IAccountApi>(configuration, ClientName);
+        }
 
-            services.Configure<MicroServicesClientHostOption>(ClientName, configuration.GetSection($"MicroServicesClientHost:{ClientName}"));
-
-            services.AddRayClientApi<IAccountApi>(ClientName);
+        public static void AddMicroServiceAServiceClient(this IServiceCollection services, IConfiguration configuration, MicroServicesClientHostOption clientHostOption)
+        {
+            services.AddRayClientApi<IAccountApi>(configuration, ClientName);
         }
     }
 }

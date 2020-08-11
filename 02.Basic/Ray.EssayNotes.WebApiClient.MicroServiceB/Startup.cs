@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Ray.EssayNotes.WebApiClient.SDK;
 using Ray.EssayNotes.WebApiClient.SDK.RayEssayNotesWebApiClientMicroServiceA;
 using Ray.EssayNotes.WebApiClient.SDK.RayEssayNotesWebApiClientMicroServiceA.Interfaces;
 
@@ -34,8 +35,11 @@ namespace Ray.EssayNotes.WebApiClient.MicroServiceB
             #endregion
 
             #region 注册服务A的SdkApi
-            services.AddMicroServiceAServiceClient(Configuration, new SDK.MicroServicesClientHostOption());
-
+            //注册A服务
+            string aClientName = "Ray.EssayNotes.WebApiClient.MicroServiceA";
+            services.AddOptions()
+                .Configure<MicroServicesClientHostOption>(aClientName, Configuration.GetSection($"MicroServicesClientHost:{aClientName}"));
+            services.AddMicroServiceAServiceClient();
             #endregion
         }
 

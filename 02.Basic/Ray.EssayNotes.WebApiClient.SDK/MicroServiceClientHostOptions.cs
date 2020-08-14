@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ray.EssayNotes.WebApiClient.SDK
 {
-    public class MicroServicesClientHostOption
+    public class MicroServiceClientHostOptions
     {
         public string ServiceName { get; set; }
 

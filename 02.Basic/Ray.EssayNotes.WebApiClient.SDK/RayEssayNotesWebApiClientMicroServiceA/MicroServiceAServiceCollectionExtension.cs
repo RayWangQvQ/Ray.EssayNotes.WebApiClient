@@ -10,13 +10,31 @@ using WebApiClientCore;
 
 namespace Ray.EssayNotes.WebApiClient.SDK.RayEssayNotesWebApiClientMicroServiceA
 {
+    /// <summary>
+    /// 注册所有服务A的接口
+    /// </summary>
     public static class MicroServiceAServiceCollectionExtension
     {
-        public static string ClientName = "Ray.EssayNotes.WebApiClient.MicroServiceA";
+        //public static string ClientName = "RayEssayNotesWebApiClientMicroServiceA";
+        private static string ClientName = "MicroServiceA";
 
         public static void AddMicroServiceAServiceClient(this IServiceCollection services)
         {
             services.AddRayClientApi<IAccountApi>(ClientName);
+        }
+
+        public static void AddMicroServiceAServiceClient(this IServiceCollection services, Action<MicroServiceClientHostOptions> options)
+        {
+            services.AddOptions<MicroServiceClientHostOptions>(ClientName).Configure(options);
+
+            services.AddMicroServiceAServiceClient();
+        }
+
+        public static void AddMicroServiceAServiceClient(this IServiceCollection services, Action<MicroServiceClientHostOptions, IServiceProvider> options)
+        {
+            services.AddOptions<MicroServiceClientHostOptions>(ClientName).Configure(options);
+
+            services.AddMicroServiceAServiceClient();
         }
     }
 }
